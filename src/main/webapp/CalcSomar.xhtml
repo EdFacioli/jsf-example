@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: edsonfacioli
+  Date: 14/06/2023
+  Time: 12:52
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Calcular soma</title>
+    <h:outputStylesheet>
+        .box {
+            display: flex;
+        }
+        .texto {
+            font: 30px arial;
+            font-weight: bolder;
+        }
+        .resultado {
+            font: 30px arial;
+            color: blue;
+        }
+    </h:outputStylesheet>
+</h:head>
+
+<h:body>
+    <p:dialog id="calcDialog"
+              widgetVar="calcDialog"
+              width="500" height="55"
+              rendered="true" modal="true"
+              visible="false"
+              header="Calcular Soma">
+
+        <h:form id="calcForm">
+            <div class="box">
+                <h:inputText value="#{calculadora.x}" id="x"/>
+                <h:outputText value="+" styleClass="texto" />
+                <h:inputText value="#{calculadora.y}" />
+                <p:commandButton actionListener="#{calculadora.somar()}" update="resultado" value="Somar" />
+                <!--        <h:commandButton value="Somar" id="btnSomar">-->
+                <!--            <f:ajax  render="resultado" execute="#{calculadora.somar()}" event="click" />-->
+                <!--        </h:commandButton>-->
+            </div>
+            <br />
+            <h:outputText value="Resultado: #{calculadora.resultado}" id="resultado" styleClass="resultado"/>
+        </h:form>
+    </p:dialog>
+</h:body>
+
+</html>

@@ -6,17 +6,12 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<f:view>
-    <h:form id="calcForm">
-        <h:inputText value="#{calculadora.x}" id="x"/>
-        <h:outputText value="+" />
-        <h:inputText value="#{calculadora.y}" />
-        <p:commandButton action="#{calculadora.somar()}" update="resultado" value="Somar" />
-<!--        <h:commandButton value="Somar" id="btnSomar">-->
-<!--            <f:ajax  render="resultado" execute="#{calculadora.somar()}" event="click" />-->
-<!--        </h:commandButton>-->
 
-        <h:outputText value="= #{calculadora.resultado}" id="resultado"/>
+<ui:include src="CalcSomar.xhtml" />
+
+<f:view>
+    <h:form>
+        <p:commandButton oncomplete="PF('calcDialog').show()" update="calcDialog" value="Calculadora" />
     </h:form>
 </f:view>
 
